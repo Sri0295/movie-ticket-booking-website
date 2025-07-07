@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: url('uff.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    
+}
+
+
+.one {
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-right: 25px;
+    padding: 30px 40px;
+    border-radius: 10px;
+    border: black;
+    box-shadow: none;
+    width: 320px;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2a6fb8;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #fffefe;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 15px;
+    color: white;
+    border-radius: 5px;
+    background-color: #222;
+    border: none;
+    display: inline-block;
+}
+
+button {
+    padding: 10px;
+    background-color: #667eea;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button a {
+    color: #fff;
+}
+
+button:hover {
+    background-color: #5a67d8;
+}
+
+.toggle-text {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.toggle-text a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Smartphones (up to 600px) */
+@media (max-width: 600px) {
+    body {
+        padding: 20px;
+        justify-items: center;
+        align-items: center;
+        margin-top: 10;
+    }
+
+    .one {
+        width: 300px;
+        margin-left: 60px;
+        padding: 20px;
+        box-shadow: none;
+    }
+
+    form {
+        padding: 15px;
+        box-shadow: none;
+    }
+
+    form h2 {
+        font-size: 20px;
+    }
+
+    input,
+    button {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .toggle-text {
+        font-size: 13px;
+    }
+}
+

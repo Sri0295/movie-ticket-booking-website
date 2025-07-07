@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking</title>
+  <link rel="stylesheet" href="index.css">
+
+</head>
+
+<body>
+  <form>
+    <h2>🎥Book Your Ticket</h2>
+    <div class="Movie">
+      <label for="name">Name:</label>
+      <input type="text" id="name" placeholder="Eg:Adam" required>
+    </div> 
+    <div class="Movie">
+      <label for="phn">Phone Number:</label>
+      <input type="tel" id="phn" placeholder="+91-987654321" required>
+    </div>
+    <div class="Movie">
+      <label for="genre">Genre:</label>
+      <br>
+      <select id="genre" name="genre">
+        <option value="select">Select Genre</option>
+        <option value="comedy">Comedy</option>
+        <option value="action">Action</option>
+        <option value="thriller">Thriller</option>
+        <option value="sci-fi">Sci-Fi</option>
+      </select>
+    </div>
+    <div class="Movie">
+      <label for="mname">Movie Name:</label>
+      <input type="text" id="mname" placeholder="Eg:Ironman" required>
+    </div>
+    <div class="Movie">
+      <label for="date">Date:</label>
+      <input type="date" id="date" required>
+    </div>
+    <div class="Movie">
+      <label for="time">Time:</label>
+      <input type="time" id="time" required>
+    </div>
+    <div class="Movie">
+      <label for="seat">Number of Seats:</label>
+      <input type="number" id="seat" min="1" max="15" value="2" required>
+    </div>
+    <div class="radio">
+      <label for="seating">Seat type:</label>
+      <br>
+      <label for="seating">First class:</label>
+      <input type="radio" name="seating" value="firstclass">
+
+      <label for="seating">Balcony:</label>
+      <input type="radio" name="seating" value="balcony">
+
+      <label for="seating">Premium:</label>
+      <input type="radio" name="seating" value="premium">
+
+    </div class="Movie">
+    
+    <div class="checkbox">
+      <label for="include-fnb">Include Food and Beverages:</label>
+      <input type="checkbox" id="include-fnb" onchange="toggleFoodOptions()">
+    </div>
+    <div class="Movie">
+      <select id="food-options" name="fnb" style="display: none;">
+        <option>Select Food and Beverages</option>
+        <option>Popcorn Combo</option>
+        <option>Fries & Juice</option>
+        <option>Nachos & Coke</option>
+        <option>Puff & Ice Coffee/Tea</option>
+      </select>
+    </div>
+
+    <script>
+      function toggleFoodOptions() {
+        const checkbox = document.getElementById('include-fnb');
+        const foodSelect = document.getElementById('food-options');
+        foodSelect.style.display = checkbox.checked ? 'block' : 'none';
+      }
+    </script>
+
+    <div class="radio">
+      <label for="payment">Payment Mode:</label>
+      <br>
+      <label for="payment">Direct Cash:</label>
+      <input type="radio" name="payment" value="Direct Cash">
+
+      <label for="payment">UPI Payment:</label>
+      <input type="radio" name="payment" value="UPI Payment">
+
+      <label for="payment">Card:</label>
+      <input type="radio" name="payment" value="Card">
+    </div>
+    <div class="Movie" style="display: none;" id="upi">
+      <label for="upi">Scan UPI QR:</label><br>
+      <img src="qrcode.webp" alt="QR Code" width="120" />
+    </div>
+
+    <script>
+      
+      document.addEventListener("DOMContentLoaded", function () {
+        const paymentRadios = document.getElementsByName("payment");
+        const upiSection = document.getElementById("upi");
+
+        paymentRadios.forEach(radio => {
+          radio.addEventListener("change", function () {
+            if (this.value === "UPI Payment") {
+              upiSection.style.display = "block";
+            } else {
+              upiSection.style.display = "none";
+            }
+          });
+        });
+      });
+    </script>
+    <div>
+      <button type="submit">Book Show</button>
+      <button type="reset">Cancel Booking</button>
+    </div>
+  </form>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const bookingForm = document.querySelector("form");
+
+    bookingForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phn").value;
+
+      if (name && phone) {
+       
+        window.location.href = "end.html"; 
+      } else {
+        alert("Please fill in all required fields.");
+      }
+    });
+  });
+</script>
+</body>
+
+</html>
