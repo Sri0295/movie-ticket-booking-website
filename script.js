@@ -21,11 +21,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Email format regex
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!]).{8,}$/;
 
   // Handle Login
   loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    const email = loginForm.querySelector("#username").value.trim(); // assuming #username is used for email
+    const email = loginForm.querySelector("#username").value.trim();
     const password = loginForm.querySelector("#password").value;
 
     if (!email || !password) {
@@ -38,21 +39,18 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Dummy credentials
-    const validEmail = "user@example.com";
-    const validPassword = "1234";
-
-    if (email === validEmail && password === validPassword) {
-      window.location.href = "index.html";
-    } else {
-      alert("Invalid email or password.");
+    if (!passwordRegex.test(password)) {
+      alert("Password must be at least 8 characters and include uppercase, lowercase, number, and special character.");
+      return;
     }
+    window.location.href = "index.html";
+
   });
 
   // Handle Signup
   signupForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    const email = signupForm.querySelector("#username").value.trim(); // assuming #username is used for email
+    const email = signupForm.querySelector("#username").value.trim();
     const password = signupForm.querySelector("#password").value;
     const confirm = signupForm.querySelector("#Confirm").value;
 
@@ -65,13 +63,16 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Please enter a valid email address.");
       return;
     }
-
+    if (!passwordRegex.test(password)) {
+      alert("Password must be at least 8 characters and include uppercase, lowercase, number, and special character.");
+      return;
+    }
     if (password !== confirm) {
       alert("Passwords do not match.");
       return;
     }
 
-    // Simulate successful signup
+
     window.location.href = "index.html";
   });
 });
