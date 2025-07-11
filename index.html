@@ -3,197 +3,123 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Booking</title>
   <link rel="stylesheet" href="index.css" />
+  <script src="index.js" defer></script>
 </head>
 
 <body>
-  <form id="bookingForm">
+  <form id="bookingForm" novalidate>
     <h2>🎥 Book Your Ticket</h2>
+    <div class="input-control">
+      <div class="errors">
 
-    <div class="Movie">
-      <label for="name">Name:</label>
-      <input type="text" id="name" placeholder="Eg: Adam" required />
-    </div>
+        <div class="Movie">
+          <label for="name">Name:</label>
+          <input type="text" id="name" placeholder="Eg: Adam" />
 
-    <div class="Movie">
-      <label for="phn">Phone Number:</label>
-      <input type="tel" id="phn" placeholder="9876543210" required />
-    </div>
+        </div>
 
-    <div class="Movie">
-      <label for="genre">Genre:</label><br />
-      <select id="genre" name="genre" required>
-        <option value="select">Select Genre</option>
-        <option value="comedy">Comedy</option>
-        <option value="action">Action</option>
-        <option value="thriller">Thriller</option>
-        <option value="sci-fi">Sci-Fi</option>
-      </select>
-    </div>
+        <div class="Movie">
+          <label for="phn">Phone Number:</label>
+          <input type="tel" id="phn" placeholder="9876543210" />
+        </div>
 
-    <div class="Movie">
-      <label for="mname">Movie Name:</label>
-      <input type="text" id="mname" placeholder="Eg: Ironman" required />
-    </div>
+        <div class="Movie">
+          <label for="genre">Genre:</label><br />
+          <select id="genre" name="genre">
+            <option value="select">Select Genre</option>
+            <option value="comedy">Comedy</option>
+            <option value="action">Action</option>
+            <option value="thriller">Thriller</option>
+            <option value="sci-fi">Sci-Fi</option>
+          </select>
+        </div>
 
-    <div class="Movie">
-      <label for="date">Date:</label>
-      <input type="date" id="date" required />
-    </div>
+        <div class="Movie">
+          <label for="mname">Movie Name:</label>
+          <input type="text" id="mname" placeholder="Eg: Ironman" />
+        </div>
 
-    <div class="Movie">
-      <label for="time">Time:</label>
-      <input type="time" id="time" required />
-    </div>
+        <div class="Movie">
+          <label for="date">Date:</label>
+          <input type="date" id="date" />
+        </div>
 
-    <div class="Movie">
-      <label for="seat">Number of Seats:</label>
-      <input type="number" id="seat" min="1" max="15" value="2" required />
-    </div>
+        <div class="Movie">
+          <label for="time">Time:</label>
+          <input type="time" id="time" />
+        </div>
 
-    <div class="radio">
-      <label>Seat type:</label><br />
-      <label>First class:</label>
-      <input type="radio" name="seating" value="firstclass" />
+        <div class="Movie">
+          <label for="seat">Number of Seats:</label>
+          <input type="number" id="seat" min="1" max="15" value="2" />
+        </div>
+        <div id="seatTypeGroup" class="error-block">
 
-      <label>Balcony:</label>
-      <input type="radio" name="seating" value="balcony" />
+          <div class="radio">
+            <label>Seat type:</label><br />
+            <label>First class:</label>
+            <input type="radio" name="seating" value="firstclass" />
 
-      <label>Premium:</label>
-      <input type="radio" name="seating" value="premium" />
-    </div>
+            <label>Balcony:</label>
+            <input type="radio" name="seating" value="balcony" />
 
-    <div class="checkbox">
-      <label for="include-fnb">Include Food and Beverages:</label>
-      <input type="checkbox" id="include-fnb" />
-    </div>
+            <label>Premium:</label>
+            <input type="radio" name="seating" value="premium" />
+          </div>
+        </div>
+      </div>
+      <div id="fnbGroup" class="error-block">
 
-    <div class="Movie">
-      <select id="food-options" name="fnb" style="display: none;">
-        <option>Select Food and Beverages</option>
-        <option>Popcorn Combo</option>
-        <option>Fries & Juice</option>
-        <option>Nachos & Coke</option>
-        <option>Puff & Ice Coffee/Tea</option>
-      </select>
-    </div>
+        <div class="checkbox">
+          <label for="include-fnb">Include Food and Beverages:</label>
+          <input type="checkbox" id="include-fnb" />
 
-    <div class="radio">
-      <label>Payment Mode:</label><br />
-      <label>Direct Cash:</label>
-      <input type="radio" name="payment" value="Direct Cash" />
 
-      <label>UPI Payment:</label>
-      <input type="radio" name="payment" value="UPI Payment" />
+          <div class="checkbox-group" id="fnb-options" style="display: none;">
+            <label class="title">Select Food & Beverages:</label><br>
+            <input type="checkbox" name="fnb" value="Popcorn"> Popcorn 🍿<br>
+            <input type="checkbox" name="fnb" value="Nachos"> Nachos 🧀<br>
+            <input type="checkbox" name="fnb" value="Soda"> Soda 🥤<br>
+            <input type="checkbox" name="fnb" value="Burger"> Burger 🍔<br>
+            <input type="checkbox" name="fnb" value="Ice Cream"> Ice Cream 🍨<br>
+          </div>
+        </div>
+      </div>
 
-      <label>Card:</label>
-      <input type="radio" name="payment" value="Card" />
-    </div>
 
-    <div class="Movie" style="display: none;" id="upi">
-      <label>Scan UPI QR:</label><br />
-      <img src="qrcode.webp" alt="QR Code" width="120" />
+
+      <div id="paymentGroup" class="error-block">
+
+        <div class="radio">
+          <label>Payment Mode:</label><br />
+          <label>Direct Cash:</label>
+          <input type="radio" name="payment" value="Direct Cash" />
+
+          <label>UPI Payment:</label>
+          <input type="radio" name="payment" value="UPI Payment" />
+
+          <label>Card:</label>
+          <input type="radio" name="payment" value="Card" />
+        </div>
+
+        <div class="Movie" style="display: none;" id="upi">
+          <label>Scan UPI QR:</label><br />
+          <img src="qrcode.webp" alt="QR Code" width="120" />
+        </div>
+      </div>
     </div>
 
     <div>
       <button type="submit">Book Show</button>
-      <button type="reset">Cancel Booking</button>
+      <button type="reset" id="cancelBooking">Cancel Booking</button>
     </div>
+    <div id="errorMessages" style="color:yellow; margin-top: 20px;"></div>
+
   </form>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const form = document.getElementById("bookingForm");
-      const foodCheckbox = document.getElementById("include-fnb");
-      const foodOptions = document.getElementById("food-options");
-      const upiSection = document.getElementById("upi");
-      const paymentRadios = document.getElementsByName("payment");
-
-      foodCheckbox.addEventListener("change", function () {
-        foodOptions.style.display = this.checked ? "block" : "none";
-        foodOptions.required = this.checked;
-      });
-
-      paymentRadios.forEach(radio => {
-        radio.addEventListener("change", function () {
-          upiSection.style.display = this.value === "UPI Payment" ? "block" : "none";
-        });
-      });
-
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const name = document.getElementById("name").value.trim();
-        const phone = document.getElementById("phn").value.trim();
-        const genre = document.getElementById("genre").value;
-        const movieName = document.getElementById("mname").value.trim();
-        const date = document.getElementById("date").value;
-        const time = document.getElementById("time").value;
-        const seats = document.getElementById("seat").value;
-        const seatType = document.querySelector('input[name="seating"]:checked');
-        const payment = document.querySelector('input[name="payment"]:checked');
-        const includeFnb = foodCheckbox.checked;
-        const selectedFood = foodOptions.value;
-
-        const nameRegex = /^[A-Za-z ]+$/;
-        const phoneRegex = /^[6-9]\d{9}$/;
-
-        if (!nameRegex.test(name)) {
-          alert("Enter a valid name (letters and spaces only).");
-          return;
-        }
-
-        if (!phoneRegex.test(phone)) {
-          alert("Enter a valid 10-digit phone number starting with 6-9.");
-          return;
-        }
-
-        if (genre === "select") {
-          alert("Please select a movie genre.");
-          return;
-        }
-
-        if (!movieName) {
-          alert("Please enter a movie name.");
-          return;
-        }
-
-        if (!date) {
-          alert("Please select a date.");
-          return;
-        }
-
-        if (!time) {
-          alert("Please select a time.");
-          return;
-        }
-
-        if (seats < 1 || seats > 15) {
-          alert("Please choose between 1 and 15 seats.");
-          return;
-        }
-
-        if (!seatType) {
-          alert("Please select a seat type.");
-          return;
-        }
-
-        if (includeFnb && selectedFood === "Select Food and Beverages") {
-          alert("Please select a food and beverage option.");
-          return;
-        }
-
-        if (!payment) {
-          alert("Please select a payment method.");
-          return;
-        }
-
-        
-        window.location.href = "end.html";
-      });
-    });
-  </script>
 </body>
+
 </html>
