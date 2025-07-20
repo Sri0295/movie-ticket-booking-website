@@ -85,6 +85,25 @@ button:hover {
     font-weight: bold;
 }
 
+#strengthText {
+  margin-top: 5px;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.weak {
+  color: red;
+}
+
+.medium {
+  color: orange;
+}
+
+.strong {
+  color: green;
+}
+
+
 /* Smartphones (up to 600px) */
 @media (max-width: 600px) {
     body {
